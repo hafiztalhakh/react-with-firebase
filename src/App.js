@@ -1,12 +1,14 @@
 import "./App.css";
+import { app } from "./utils/firebaseConfig";
+import SignUp from "./components/signup";
 
 function App() {
   return (
     <>
       <div className="d-flex">
-        <div className="card">Hello World</div>
-        <div className="card">ReactJS</div>
-        <div className="card">Firebase</div>
+        <div className="card">
+          <SignUp />
+        </div>
       </div>
     </>
   );
