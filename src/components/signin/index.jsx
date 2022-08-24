@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 
 export default function SignIn() {
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -22,9 +28,22 @@ export default function SignIn() {
       });
   };
 
+  const handleGoogleSignIn = (e) => {
+    e.preventDefault();
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+        alert("Success");
+      })
+      .catch((err) => {
+        alert(err?.message);
+      });
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="container">
+    <>
+      <form onSubmit={handleSubmit}>
         <h1>Sign In</h1>
         <hr />
         <label htmlFor="email">
@@ -53,7 +72,10 @@ export default function SignIn() {
         <div className="clearfix">
           <button type="submit">Sign In</button>
         </div>
+      </form>
+      <div className="clearfix">
+        <button onClick={handleGoogleSignIn}>Sign In with Google</button>
       </div>
-    </form>
+    </>
   );
 }

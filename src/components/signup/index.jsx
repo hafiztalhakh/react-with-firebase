@@ -29,47 +29,45 @@ export default function SignUp() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="container">
-        <h1>Sign Up</h1>
-        <hr />
-        <label htmlFor="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          required
-          value={state?.email}
-          onChange={(e) => setState({ ...state, email: e.target.value })}
-        />
-        <label htmlFor="psw">
-          <b>Password</b>
-        </label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-          value={state?.password}
-          onChange={(e) => setState({ ...state, password: e.target.value })}
-        />
-        <label htmlFor="psw-repeat">
-          <b>Confirm Password</b>
-        </label>
-        <input
-          type="password"
-          placeholder="Confirm Your Password"
-          name="psw-repeat"
-          required
-          value={state?.confirmPassword}
-          onChange={(e) =>
-            setState({ ...state, confirmPassword: e.target.value })
-          }
-        />
-        <div className="clearfix">
-          <button type="submit">Sign Up</button>
-        </div>
+      <h1>Sign Up</h1>
+      <hr />
+      <label htmlFor="email">
+        <b>Email</b>
+      </label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        name="email"
+        required
+        value={state?.email}
+        onChange={(e) => setState({ ...state, email: e.target.value })}
+      />
+      <label htmlFor="psw">
+        <b>Password</b>
+      </label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="psw"
+        required
+        value={state?.password}
+        onChange={(e) => setState({ ...state, password: e.target.value })}
+      />
+      <label htmlFor="psw-repeat">
+        <b>Confirm Password</b>
+      </label>
+      <input
+        type="password"
+        placeholder="Confirm Your Password"
+        name="psw-repeat"
+        required
+        value={state?.confirmPassword}
+        onChange={(e) =>
+          setState({ ...state, confirmPassword: e.target.value })
+        }
+      />
+      <div className="clearfix">
+        <button type="submit">Sign Up</button>
       </div>
     </form>
   );
