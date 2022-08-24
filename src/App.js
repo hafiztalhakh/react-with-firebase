@@ -2,6 +2,7 @@ import "./App.css";
 import { app } from "./utils/firebaseConfig";
 import SignUp from "./components/signup";
 import SignIn from "./components/signin";
+import ContactForm from "./components/contact_form";
 
 function App() {
   return (
@@ -12,6 +13,11 @@ function App() {
         </div>
         <div className="card auth-contianers">
           <SignIn />
+        </div>
+      </div>
+      <div className="d-flex">
+        <div className="card auth-contianers">
+          <ContactForm />
         </div>
       </div>
     </>
