@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "practise-react-firebase",
     "public": "build",
     "ignore": [
       "firebase.json",
