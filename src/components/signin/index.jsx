@@ -1,36 +1,31 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-export default function SignUp() {
+export default function SignIn() {
   const auth = getAuth();
   const [state, setState] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, confirmPassword } = state;
+    const { email, password } = state;
 
-    if (password === confirmPassword) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((res) => {
-          console.log(res);
-          alert("Success");
-        })
-        .catch((err) => {
-          alert(err?.message);
-        });
-    } else {
-      alert("Password does not match");
-    }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        alert("Success");
+      })
+      .catch((err) => {
+        alert(err?.message);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
-        <h1>Sign Up</h1>
+        <h1>Sign In</h1>
         <hr />
         <label htmlFor="email">
           <b>Email</b>
@@ -54,21 +49,9 @@ export default function SignUp() {
           value={state?.password}
           onChange={(e) => setState({ ...state, password: e.target.value })}
         />
-        <label htmlFor="psw-repeat">
-          <b>Confirm Password</b>
-        </label>
-        <input
-          type="password"
-          placeholder="Confirm Your Password"
-          name="psw-repeat"
-          required
-          value={state?.confirmPassword}
-          onChange={(e) =>
-            setState({ ...state, confirmPassword: e.target.value })
-          }
-        />
+
         <div className="clearfix">
-          <button type="submit">Sign Up</button>
+          <button type="submit">Sign In</button>
         </div>
       </div>
     </form>
