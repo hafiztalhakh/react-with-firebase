@@ -1,5 +1,5 @@
 import "./App.css";
-import ToDoApp from "./components/crud_operations";
+import Create from "./components/crud_operations/Create";
 import { app } from "./utils/firebaseConfig";
 // import SignUp from "./components/signup";
 // import SignIn from "./components/signin";
@@ -27,7 +27,7 @@ function App() {
       </div> */}
       <div className="d-flex justify-center">
         <div className="card auth-contianers">
-          <ToDoApp />
+          <Create />
         </div>
       </div>
     </>

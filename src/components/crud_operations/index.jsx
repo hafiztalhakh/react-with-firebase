@@ -3,6 +3,8 @@ import { database } from "../../utils/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
 export default function ToDoApp() {
+  // This component is not maintained by community
+
   const [inputValue, setInputValue] = useState("");
   const [todo, setTodo] = useState([""]);
 
@@ -21,7 +23,7 @@ export default function ToDoApp() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <label for="title">Todo Items</label>
+        {/* <label for="title">Todo Items</label>
         {todo.map((input, index) => (
           <div className="d-flex space-between">
             <input
@@ -65,7 +67,7 @@ export default function ToDoApp() {
               Cancel
             </button>
           </div>
-        ))}
+        ))} */}
         <hr />
         <button type="submit">Save</button>
       </form>
