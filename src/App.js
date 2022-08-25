@@ -1,6 +1,7 @@
 import "./App.css";
-import Create from "./components/crud_operations/Create";
 import { app } from "./utils/firebaseConfig";
+import Create from "./components/crud_operations/Create";
+import Read from "./components/crud_operations/Read";
 // import SignUp from "./components/signup";
 // import SignIn from "./components/signin";
 // import ContactForm from "./components/contact_form";
@@ -28,6 +29,11 @@ function App() {
       <div className="d-flex justify-center">
         <div className="card auth-contianers">
           <Create />
+        </div>
+      </div>
+      <div className="d-flex justify-center">
+        <div className="card auth-contianers">
+          <Read />
         </div>
       </div>
     </>
