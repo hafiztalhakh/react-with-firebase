@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import { app } from "./utils/firebaseConfig";
-import Create from "./components/crud_operations/Create";
-import Read from "./components/crud_operations/Read";
-import Update from "./components/crud_operations/Update";
-import Delete from "./components/crud_operations/Delete";
-import UploadFile from "./components/upload_file";
+// import Create from "./components/crud_operations/Create";
+// import Read from "./components/crud_operations/Read";
+// import Update from "./components/crud_operations/Update";
+// import Delete from "./components/crud_operations/Delete";
+// import UploadFile from "./components/upload_file";
+import AuthStateListner from "./components/auth_state_changes";
 // import SignUp from "./components/signup";
 // import SignIn from "./components/signin";
 // import ContactForm from "./components/contact_form";
@@ -28,6 +29,11 @@ function App() {
 
   return (
     <>
+      <div className="d-flex justify-center">
+        <div className="card auth-contianers">
+          <AuthStateListner />
+        </div>
+      </div>
       {/* <div className="d-flex space-between">
         <div className="card auth-contianers">
           <SignUp />
@@ -44,7 +50,8 @@ function App() {
           <Messages />
         </div>
       </div> */}
-      <div className="d-flex justify-center">
+
+      {/* <div className="d-flex justify-center">
         <div className="card auth-contianers">
           <Create />
         </div>
@@ -75,7 +82,7 @@ function App() {
             <Delete id={docId} refresh={() => setShowDelete(false)} />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
