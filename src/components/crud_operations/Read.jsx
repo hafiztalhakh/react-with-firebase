@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../../utils/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 
 export default function Read({ updateItemHandler, deleteItemHandler }) {
   const collectionRef = collection(database, "todos");
@@ -10,16 +10,34 @@ export default function Read({ updateItemHandler, deleteItemHandler }) {
     getData();
   }, []);
 
+  // const getData = async () => {
+  //   try {
+  //     const querySnapshot = await getDocs(collectionRef);
+  //     const tempArr = [];
+  //     querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       console.log(doc.id, " => ", doc.data());
+  //       tempArr.push({ docId: doc.id, ...doc.data() });
+  //     });
+  //     setState([...tempArr]);
+  //   } catch (err) {
+  //     console.log("Error: ", err);
+  //   }
+  // };
+
+  // getting data realtime
   const getData = async () => {
     try {
-      const querySnapshot = await getDocs(collectionRef);
-      const tempArr = [];
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        tempArr.push({ docId: doc.id, ...doc.data() });
+      onSnapshot(collectionRef, (doc) => {
+        const tempArr = [];
+
+        doc.forEach((item) => {
+          // doc.data() is never undefined for query doc snapshots
+          tempArr.push({ docId: item.id, ...item.data() });
+        });
+
+        setState([...tempArr]);
       });
-      setState([...tempArr]);
     } catch (err) {
       console.log("Error: ", err);
     }
