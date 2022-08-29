@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database } from "../../utils/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
-export default function Create() {
+export default function Read({ updateItemHandler }) {
   const collectionRef = collection(database, "todos");
   const [state, setState] = useState("");
 
@@ -32,7 +32,7 @@ export default function Create() {
           state.map((el, i) => (
             <li key={i}>
               {el.todoItem}
-              <button>Edit</button>
+              <button onClick={() => updateItemHandler(el.docId)}>Edit</button>
             </li>
           ))}
       </ul>
