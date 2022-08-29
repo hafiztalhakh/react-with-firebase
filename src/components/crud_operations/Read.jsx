@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database } from "../../utils/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
-export default function Read({ updateItemHandler }) {
+export default function Read({ updateItemHandler, deleteItemHandler }) {
   const collectionRef = collection(database, "todos");
   const [state, setState] = useState("");
 
@@ -30,9 +30,35 @@ export default function Read({ updateItemHandler }) {
       <ul>
         {state?.length > 0 &&
           state.map((el, i) => (
-            <li key={i}>
-              {el.todoItem}
-              <button onClick={() => updateItemHandler(el.docId)}>Edit</button>
+            <li
+              key={i}
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <p style={{ display: "inline-flex" }}>{el.todoItem}</p>
+              <div>
+                <button
+                  style={{
+                    display: "inline-flex",
+                    width: "auto",
+                    borderRadius: 5,
+                  }}
+                  onClick={() => updateItemHandler(el.docId)}
+                >
+                  Edit
+                </button>
+                <button
+                  style={{
+                    display: "inline-flex",
+                    width: "auto",
+                    borderRadius: 5,
+                    marginLeft: 5,
+                    backgroundColor: "#d92a2a",
+                  }}
+                  onClick={() => deleteItemHandler(el.docId)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
       </ul>

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { database } from "../../utils/firebaseConfig";
-import { collection, doc, addDoc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-export default function Update({ id }) {
-  const collectionRef = collection(database, "todos");
+export default function Update({ id, refresh }) {
   const docRef = doc(database, "todos", id);
   const [inputValue, setInputValue] = useState("");
 
@@ -31,8 +30,10 @@ export default function Update({ id }) {
       await updateDoc(docRef, { todoItem: inputValue });
       alert("Saved");
       setInputValue("");
+      refresh();
     } catch (err) {
       console.log("Error: ", err);
+      refresh();
     }
   };
 
