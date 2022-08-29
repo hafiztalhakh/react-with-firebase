@@ -5,6 +5,7 @@ import Create from "./components/crud_operations/Create";
 import Read from "./components/crud_operations/Read";
 import Update from "./components/crud_operations/Update";
 import Delete from "./components/crud_operations/Delete";
+import UploadFile from "./components/upload_file";
 // import SignUp from "./components/signup";
 // import SignIn from "./components/signin";
 // import ContactForm from "./components/contact_form";
@@ -54,6 +55,11 @@ function App() {
             updateItemHandler={hanldeUpdateItem}
             deleteItemHandler={hanldeDeleteItem}
           />
+        </div>
+      </div>
+      <div className="d-flex justify-center">
+        <div className="card auth-contianers">
+          <UploadFile />
         </div>
       </div>
       {showUpdate && (
